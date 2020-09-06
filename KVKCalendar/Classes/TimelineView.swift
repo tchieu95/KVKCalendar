@@ -236,7 +236,7 @@ final class TimelineView: UIView, EventDateProtocol {
             let eventsFiltered = events.filter({ (item) in
                 let itemEnd = item.end.timeIntervalSince1970 - TimeInterval(style.timeline.offsetEvent)
                 let itemStart = item.start.timeIntervalSince1970
-                if itemStart < itemEnd || start < endCalculated {
+                if itemStart > itemEnd || start > endCalculated {
                     return false
                 }
                 return (itemStart...itemEnd).contains(start) || (itemStart...itemEnd).contains(endCalculated) || (start...endCalculated).contains(itemStart) || (start...endCalculated).contains(itemEnd)
